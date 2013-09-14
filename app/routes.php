@@ -11,7 +11,19 @@
 |
 */
 
-Route::get('/', function()
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+Route::group(array('before' => 'auth'), function()
 {
-	return View::make('hello');
+    Route::get('/', function()
+    {
+        // Has Auth Filter
+    });
+
+    Route::get('user/profile', function()
+    {
+        // Has Auth Filter
+    });
 });
+
