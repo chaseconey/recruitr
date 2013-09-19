@@ -10,7 +10,10 @@ class HomeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$this->layout->view = View::make('home.index');
+		$app = Application::where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
+
+		$this->layout->view = View::make('home.index')
+			->with('app', $app);
 	}
 
 }

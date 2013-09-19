@@ -2,8 +2,8 @@
 
 @section('main')
 
-<h1>Edit App</h1>
-{{ Form::model($app, array('method' => 'PATCH', 'route' => array('apps.update', $app->id))) }}
+<h1>Edit Application</h1>
+{{ Form::model($application, array('method' => 'PATCH', 'route' => array('applications.update', $application->id))) }}
 	<ul>
         <li>
             {{ Form::label('first_name', 'First_name:') }}
@@ -37,7 +37,7 @@
 
 		<li>
 			{{ Form::submit('Update', array('class' => 'btn btn-info')) }}
-			{{ link_to_route('apps.show', 'Cancel', $app->id, array('class' => 'btn')) }}
+			{{ link_to_route('applications.show', 'Cancel', $application->id, array('class' => 'btn')) }}
 		</li>
 	</ul>
 {{ Form::close() }}

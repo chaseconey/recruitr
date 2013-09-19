@@ -1,6 +1,6 @@
 <?php
 
-class AppController extends \BaseController {
+class ApplyController extends \BaseController {
 
 
 	protected $layout = 'master';
@@ -12,7 +12,6 @@ class AppController extends \BaseController {
 	 */
 	public function index()
 	{
-
 		$this->layout->view = View::make('app.index');
 	}
 

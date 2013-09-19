@@ -1,15 +1,16 @@
 <?php
 
-class AppsTableSeeder extends Seeder {
+class ApplicationsTableSeeder extends Seeder {
 
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		DB::table('apps')->truncate();
+		DB::table('applications')->truncate();
 
-		$apps = array(
+		$applications = array(
             "first_name" => "Chase",
             "last_name" => "Coney",
+            "status" => "unread",
             "about" => "About me",
             "career" => "Career thing...",
             "project" => "Made a bunny",
@@ -18,7 +19,7 @@ class AppsTableSeeder extends Seeder {
 		);
 
 		// Uncomment the below to run the seeder
-		DB::table('apps')->insert($apps);
+		DB::table('applications')->insert($applications);
 	}
 
 }

@@ -2,6 +2,7 @@
 <head>
     <title>Recruitr</title>
     <link rel="stylesheet" href="/css/foundation.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -37,8 +38,18 @@
   </nav>
 
   <!-- End Top Bar -->
+  <div class="container">
 
-  @yield('content')
+    @if (Session::has('message'))
+    <div data-alert class="alert-box alert">
+      <a href="#" class="close">&times;</a>
+      {{ Session::get('message') }}
+    </div>
+    @endif
+
+    @yield('content')
+
+  </div>
 
 
   <!-- Footer -->

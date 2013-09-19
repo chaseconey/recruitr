@@ -1,17 +1,17 @@
 <?php
 
-class AppsController extends BaseController {
+class ApplicationsController extends BaseController {
 
 	/**
-	 * App Repository
+	 * Application Repository
 	 *
-	 * @var App
+	 * @var Application
 	 */
-	protected $app;
+	protected $application;
 
-	public function __construct(App $app)
+	public function __construct(Application $application)
 	{
-		$this->app = $app;
+		$this->application = $application;
 	}
 
 	/**
@@ -21,9 +21,9 @@ class AppsController extends BaseController {
 	 */
 	public function index()
 	{
-		$apps = $this->app->all();
+		$applications = $this->application->all();
 
-		return View::make('apps.index', compact('apps'));
+		return View::make('applications.index', compact('applications'));
 	}
 
 	/**
@@ -33,7 +33,7 @@ class AppsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('apps.create');
+		return View::make('applications.create');
 	}
 
 	/**
@@ -44,16 +44,16 @@ class AppsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$validation = Validator::make($input, App::$rules);
+		$validation = Validator::make($input, Application::$rules);
 
 		if ($validation->passes())
 		{
-			$this->app->create($input);
+			$this->application->create($input);
 
-			return Redirect::route('apps.index');
+			return Redirect::route('applications.index');
 		}
 
-		return Redirect::route('apps.create')
+		return Redirect::route('applications.create')
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -67,9 +67,9 @@ class AppsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$app = $this->app->findOrFail($id);
+		$application = $this->application->findOrFail($id);
 
-		return View::make('apps.show', compact('app'));
+		return View::make('applications.show', compact('application'));
 	}
 
 	/**
@@ -80,14 +80,14 @@ class AppsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$app = $this->app->find($id);
+		$application = $this->application->find($id);
 
-		if (is_null($app))
+		if (is_null($application))
 		{
-			return Redirect::route('apps.index');
+			return Redirect::route('applications.index');
 		}
 
-		return View::make('apps.edit', compact('app'));
+		return View::make('applications.edit', compact('application'));
 	}
 
 	/**
@@ -99,17 +99,17 @@ class AppsController extends BaseController {
 	public function update($id)
 	{
 		$input = array_except(Input::all(), '_method');
-		$validation = Validator::make($input, App::$rules);
+		$validation = Validator::make($input, Application::$rules);
 
 		if ($validation->passes())
 		{
-			$app = $this->app->find($id);
-			$app->update($input);
+			$application = $this->application->find($id);
+			$application->update($input);
 
-			return Redirect::route('apps.show', $id);
+			return Redirect::route('applications.show', $id);
 		}
 
-		return Redirect::route('apps.edit', $id)
+		return Redirect::route('applications.edit', $id)
 			->withInput()
 			->withErrors($validation)
 			->with('message', 'There were validation errors.');
@@ -123,9 +123,9 @@ class AppsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->app->find($id)->delete();
+		$this->application->find($id)->delete();
 
-		return Redirect::route('apps.index');
+		return Redirect::route('applications.index');
 	}
 
 }

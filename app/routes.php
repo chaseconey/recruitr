@@ -17,7 +17,12 @@ Route::get( 'user/logout',                 'UserController@logout');
 Route::group(array('before' => 'auth'), function()
 {
     Route::resource('/', 'HomeController', array('only' => array('index')));
-    Route::resource('apply', 'AppController');
+    Route::get('apply', 'ApplyController@index');
 
     Route::resource('apps', 'AppsController');
 });
+
+
+Route::resource('applications', 'ApplicationsController');
+
+Route::resource('applications', 'ApplicationsController');

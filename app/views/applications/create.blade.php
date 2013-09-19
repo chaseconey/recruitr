@@ -2,9 +2,9 @@
 
 @section('main')
 
-<h1>Create App</h1>
+<h1>Create Application</h1>
 
-{{ Form::open(array('route' => 'apps.store')) }}
+{{ Form::open(array('route' => 'applications.store')) }}
 	<ul>
         <li>
             {{ Form::label('first_name', 'First_name:') }}

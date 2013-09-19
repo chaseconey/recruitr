@@ -1,6 +1,6 @@
 <?php
 
-class App extends Eloquent {
+class Application extends Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(
@@ -9,6 +9,7 @@ class App extends Eloquent {
 		'about' => 'required',
 		'career' => 'required',
 		'project' => 'required',
-		'resume_loc' => 'required'
+		'resume_loc' => 'required',
+        'user_id' => 'required'
 	);
 }
