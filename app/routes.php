@@ -23,16 +23,13 @@ Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
 
-Route::group(array('before' => 'auth'), function()
-{
-    Route::get('/', function()
-    {
-        // Has Auth Filter
-    });
+// Route::group(array('before' => 'auth'), function()
+// {
+    Route::resource('/', 'HomeController', array('only' => array('index')));
 
     Route::get('user/profile', function()
     {
         // Has Auth Filter
     });
-});
+// });
 

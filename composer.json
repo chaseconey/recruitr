@@ -8,6 +8,9 @@
 		"way/generators": "dev-master",
 		"zizaco/confide": "1.0.x"
 	},
+	"require-dev": {
+		"way/guard-laravel": "dev-master"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",
