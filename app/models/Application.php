@@ -9,7 +9,6 @@ class Application extends Eloquent {
 		'about' => 'required',
 		'career' => 'required',
 		'project' => 'required',
-		'resume_loc' => 'required',
-        'user_id' => 'required'
+		'resume_loc' => 'required'
 	);
 }

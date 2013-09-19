@@ -2,6 +2,14 @@
     font-size: 36px;
 }
 
+.error {
+    color: red;
+}
+
+.current-step {
+    font-weight: bold;
+}
+
 .stage {
     border: 1px solid black;
     padding: 20px;

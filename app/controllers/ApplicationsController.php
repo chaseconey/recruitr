@@ -2,6 +2,8 @@
 
 class ApplicationsController extends BaseController {
 
+	protected $layout = 'master';
+
 	/**
 	 * Application Repository
 	 *
@@ -21,9 +23,9 @@ class ApplicationsController extends BaseController {
 	 */
 	public function index()
 	{
-		$applications = $this->application->all();
+		$applications = $this->application->where("user_id", "=", Auth::user()->id)->get();
 
-		return View::make('applications.index', compact('applications'));
+		$this->layout->view = View::make('applications.index', compact('applications'));
 	}
 
 	/**
@@ -33,7 +35,7 @@ class ApplicationsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('applications.create');
+		$this->layout->view = View::make('applications.create');
 	}
 
 	/**
@@ -48,9 +50,19 @@ class ApplicationsController extends BaseController {
 
 		if ($validation->passes())
 		{
-			$this->application->create($input);
+			$this->application->create(
+				array("first_name" => $input['first_name'],
+				"last_name" => $input['last_name'],
+				"career" => $input['career'],
+				"about" => $input['about'],
+				"resume_loc" => $input['resume_loc'],
+				"project" => $input['project'],
+				"status" => "unread",
+				"user_id" => Auth::user()->id)
+			);
 
-			return Redirect::route('applications.index');
+			return Redirect::to('/')
+				->with('message', 'Application has been submitted');
 		}
 
 		return Redirect::route('applications.create')
@@ -69,7 +81,7 @@ class ApplicationsController extends BaseController {
 	{
 		$application = $this->application->findOrFail($id);
 
-		return View::make('applications.show', compact('application'));
+		$this->layout->view = View::make('applications.show', compact('application'));
 	}
 
 	/**
@@ -87,7 +99,7 @@ class ApplicationsController extends BaseController {
 			return Redirect::route('applications.index');
 		}
 
-		return View::make('applications.edit', compact('application'));
+		$this->layout->view = View::make('applications.edit', compact('application'));
 	}
 
 	/**

@@ -1,52 +1,80 @@
-@extends('layouts.scaffold')
 
-@section('main')
+@section('content')
+<!-- Main Page Content and Sidebar -->
 
-<h1>Create Application</h1>
+<div class="row">
 
-{{ Form::open(array('route' => 'applications.store')) }}
-	<ul>
-        <li>
-            {{ Form::label('first_name', 'First_name:') }}
-            {{ Form::text('first_name') }}
-        </li>
+    <!-- Contact Details -->
+    <div class="large-9 columns">
 
-        <li>
-            {{ Form::label('last_name', 'Last_name:') }}
-            {{ Form::text('last_name') }}
-        </li>
+        @if ($errors->any())
+            <ul>
+              {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+            </ul>
+        @endif
 
-        <li>
-            {{ Form::label('about', 'About:') }}
-            {{ Form::textarea('about') }}
-        </li>
+        {{ Form::open(array('route' => 'applications.store')) }}
+        <fieldset>
 
-        <li>
-            {{ Form::label('career', 'Career:') }}
-            {{ Form::textarea('career') }}
-        </li>
+        <legend>Application</legend>
 
-        <li>
-            {{ Form::label('project', 'Project:') }}
-            {{ Form::textarea('project') }}
-        </li>
+        <div class="row">
+            <div class="large-6 small-12 columns">
+              <label>First Name</label>
+              <input type="text" name="first_name">
+            </div>
+            <div class="large-6 small-12 columns">
+              <label>Last Name</label>
+              <input type="text" name="last_name">
+            </div>
+        </div>
 
-        <li>
-            {{ Form::label('resume_loc', 'Resume_loc:') }}
-            {{ Form::text('resume_loc') }}
-        </li>
+        <div class="row">
+            <div class="large-12 small-12 columns">
+                <label>Tell me a bit about yourself</label>
+                <textarea name="about"></textarea>
+            </div>
+        </div>
 
-		<li>
-			{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
-		</li>
-	</ul>
+        <div class="row">
+            <div class="large-12 small-12 columns">
+                <label>What are you looking for in the next 1-2 years career-wise?</label>
+                <textarea name="career"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 small-12 columns">
+                <label>Tell me about a large web-related project you worked on recently? What technologies were used, what process did you use to complete the project, etc?</label>
+                <textarea name="project"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 small-12 columns">
+                <label for="resume_loc">Resume</label>
+                {{ Form::file('resume_loc') }}
+            </div>
+        </div>
+
+        <button type="submit" class="right">Submit</button>
+</fieldset>
+
 {{ Form::close() }}
 
-@if ($errors->any())
-	<ul>
-		{{ implode('', $errors->all('<li class="error">:message</li>')) }}
-	</ul>
-@endif
+</div>
+<!-- End Contact Details -->
+
+
+<!-- Sidebar -->
+<div class="large-3 columns">
+    <h3>Questions?</h3>
+
+</div>
+<!-- End Sidebar -->
+</div>
+
+<!-- End Main Content and Sidebar -->
 
 @stop
 

@@ -25,7 +25,7 @@
         <li class="divider"></li>
         <li>{{ link_to('/', 'Home') }}</li>
         <li class="divider"></li>
-        <li>{{ link_to('/apply', 'Apply') }}</li>
+        <li>{{ link_to_route('applications.create', 'Apply') }}</li>
         <li class="divider"></li>
         <li class="has-dropdown">
           <a href="#">{{ $user->email }}</a>
@@ -41,7 +41,7 @@
   <div class="container">
 
     @if (Session::has('message'))
-    <div data-alert class="alert-box alert">
+    <div data-alert class="alert-box">
       <a href="#" class="close">&times;</a>
       {{ Session::get('message') }}
     </div>

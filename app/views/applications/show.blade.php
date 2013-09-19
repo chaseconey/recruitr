@@ -1,6 +1,5 @@
-@extends('layouts.scaffold')
 
-@section('main')
+@section('content')
 
 <h1>Show Application</h1>
 
