@@ -116,7 +116,6 @@ return array(
 
 		'Way\Generators\GeneratorsServiceProvider',
 		'Zizaco\Confide\ConfideServiceProvider',
-		'Way\Console\GuardLaravelServiceProvider',
 
 	),
 

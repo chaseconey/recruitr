@@ -10,8 +10,7 @@ class HomeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$this->layout->view = View::make('home.index')
-			->with('title', 'Home');
+		$this->layout->view = View::make('home.index');
 	}
 
 }

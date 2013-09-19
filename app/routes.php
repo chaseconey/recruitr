@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+View::share('user', Auth::user());
 
 // Confide routes
 Route::get( 'user/create',                 'UserController@create');
@@ -23,13 +14,10 @@ Route::get( 'user/reset_password/{token}', 'UserController@reset_password');
 Route::post('user/reset_password',         'UserController@do_reset_password');
 Route::get( 'user/logout',                 'UserController@logout');
 
-// Route::group(array('before' => 'auth'), function()
-// {
+Route::group(array('before' => 'auth'), function()
+{
     Route::resource('/', 'HomeController', array('only' => array('index')));
+    Route::resource('apply', 'AppController');
 
-    Route::get('user/profile', function()
-    {
-        // Has Auth Filter
-    });
-// });
-
+    Route::resource('apps', 'AppsController');
+});

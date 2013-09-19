@@ -1,34 +1,74 @@
 <html>
 <head>
-    <title>Test</title>
-    {{ stylesheet() }}
+    <title>Recruitr</title>
+    <link rel="stylesheet" href="/css/foundation.min.css">
 </head>
 <body>
 
-<header>
-    <div class="container">
+ <nav class="top-bar">
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1>
+          <a href="#">
+            Recruitr
+          </a>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+    </ul>
 
-        <div class="row">
-            <div class="three columns">
-                <a href="index.php"><img src="http://placehold.it/200x60"></a>
-            </div>
-            <div class="nine columns">
-                <nav>
-                    <ul>
-                        <li><a href="services/adoption-foster-care.php">Adopt and Foster</a></li>
-                        <li><a href="services/">Services</a></li>
-                        <li><a href="culinary-academy/">Culinary Academy</a></li>
-                        <li><a href="blog/">Blog</a></li>
-                        <li><a href="get-involved/">Get Involved</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="divider"></li>
+        <li>{{ link_to('/', 'Home') }}</li>
+        <li class="divider"></li>
+        <li>{{ link_to('/apply', 'Apply') }}</li>
+        <li class="divider"></li>
+        <li class="has-dropdown">
+          <a href="#">{{ $user->email }}</a>
+          <ul class="dropdown">
+            <li>{{ link_to('user/logout', 'Logout') }}</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <!-- End Top Bar -->
+
+  @yield('content')
+
+
+  <!-- Footer -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>&copy; Copyright Epicom 2013.</p>
         </div>
-
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-</header>
-@yield('content')
+  </footer>
 
-{{ script() }}
+  <!-- End Footer -->
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
 </body>
 </html>
