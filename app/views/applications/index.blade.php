@@ -14,7 +14,7 @@
 				<th>About</th>
 				<th>Career</th>
 				<th>Project</th>
-				<th>Resume_loc</th>
+				<th>Resume</th>
 			</tr>
 		</thead>
 
@@ -26,7 +26,7 @@
 					<td>{{{ $application->about }}}</td>
 					<td>{{{ $application->career }}}</td>
 					<td>{{{ $application->project }}}</td>
-					<td>{{{ $application->resume_loc }}}</td>
+					<td>{{ link_to('/uploads/'.$application->resume_hash, $application->resume_name) }}</td>
                     <td>{{ link_to_route('applications.edit', 'Edit', array($application->id), array('class' => 'btn btn-info')) }}</td>
                     <td>
                         {{ Form::open(array('method' => 'DELETE', 'route' => array('applications.destroy', $application->id))) }}

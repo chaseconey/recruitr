@@ -9,6 +9,6 @@ class Application extends Eloquent {
 		'about' => 'required',
 		'career' => 'required',
 		'project' => 'required',
-		'resume_loc' => 'required'
+		'resume_name' => 'required'
 	);
 }

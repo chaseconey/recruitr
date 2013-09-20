@@ -20,7 +20,8 @@ class CreateApplicationsTable extends Migration {
 			$table->text('about');
 			$table->text('career');
 			$table->text('project');
-			$table->string('resume_loc');
+			$table->string('resume_name');
+			$table->string('resume_hash');
 			$table->integer('user_id');
 			$table->timestamps();
 		});

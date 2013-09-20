@@ -14,7 +14,8 @@ class ApplicationsTableSeeder extends Seeder {
             "about" => "About me",
             "career" => "Career thing...",
             "project" => "Made a bunny",
-            "resume_loc" => "rawr.docxxxx",
+            "resume_name" => "rawr.docx",
+            "resume_hash" => "r4aseX",
             "user_id" => 1
 		);
 

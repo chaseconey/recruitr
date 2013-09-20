@@ -19,4 +19,8 @@ Route::group(array('before' => 'auth'), function()
     Route::resource('/', 'HomeController', array('only' => array('index')));
     // Route::get('apply/{step?}', 'ApplyController@index');
     Route::resource('applications', 'ApplicationsController');
+
+    Route::get('/uploads/{file}', function($file) {
+        $hash = md5($file . Auth::user()->email);
+    });
 });

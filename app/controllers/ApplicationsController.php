@@ -48,14 +48,23 @@ class ApplicationsController extends BaseController {
 		$input = Input::all();
 		$validation = Validator::make($input, Application::$rules);
 
+
 		if ($validation->passes())
 		{
+			// Upload files
+			$destinationPath = '/var/uploads/';
+			$filename = $input['resume_name']->getClientOriginalName();
+
+			$resume_hash = md5($filename . Auth::user()->id);
+			$input['resume_name']->move($destinationPath, $resume_hash);
+
 			$this->application->create(
 				array("first_name" => $input['first_name'],
 				"last_name" => $input['last_name'],
 				"career" => $input['career'],
 				"about" => $input['about'],
-				"resume_loc" => $input['resume_loc'],
+				"resume_name" => $filename,
+				"resume_hash" => $resume_hash,
 				"project" => $input['project'],
 				"status" => "unread",
 				"user_id" => Auth::user()->id)

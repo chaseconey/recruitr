@@ -13,47 +13,47 @@
             </ul>
         @endif
 
-        {{ Form::open(array('route' => 'applications.store')) }}
+        {{ Form::open(array('route' => 'applications.store', 'files' => true)) }}
         <fieldset>
 
         <legend>Application</legend>
 
         <div class="row">
             <div class="large-6 small-12 columns">
-              <label>First Name</label>
-              <input type="text" name="first_name">
+              {{ Form::label('first_name', 'First Name') }}
+              {{ Form::text('first_name') }}
             </div>
             <div class="large-6 small-12 columns">
-              <label>Last Name</label>
-              <input type="text" name="last_name">
+              {{ Form::label('last_name', 'Last Name') }}
+              {{ Form::text('last_name') }}
             </div>
         </div>
 
         <div class="row">
             <div class="large-12 small-12 columns">
-                <label>Tell me a bit about yourself</label>
-                <textarea name="about"></textarea>
+                {{ Form::label('about', 'Tell me a bit about yourself') }}
+                {{ Form::textarea('about') }}
             </div>
         </div>
 
         <div class="row">
             <div class="large-12 small-12 columns">
-                <label>What are you looking for in the next 1-2 years career-wise?</label>
-                <textarea name="career"></textarea>
+                {{ Form::label('career', 'What are you looking for in the next 1-2 years career-wise?') }}
+                {{ Form::textarea('career') }}
             </div>
         </div>
 
         <div class="row">
             <div class="large-12 small-12 columns">
-                <label>Tell me about a large web-related project you worked on recently? What technologies were used, what process did you use to complete the project, etc?</label>
-                <textarea name="project"></textarea>
+                {{ Form::label('project', 'Tell me about a large web-related project you worked on recently? What technologies were used, what process did you use to complete the project, etc?') }}
+                {{ Form::textarea('project') }}
             </div>
         </div>
 
         <div class="row">
             <div class="large-12 small-12 columns">
-                <label for="resume_loc">Resume</label>
-                {{ Form::file('resume_loc') }}
+                {{ Form::label('resume_name', 'Resume') }}
+                {{ Form::file('resume_name') }}
             </div>
         </div>
 
