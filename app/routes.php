@@ -20,7 +20,12 @@ Route::group(array('before' => 'auth'), function()
     // Route::get('apply/{step?}', 'ApplyController@index');
     Route::resource('applications', 'ApplicationsController');
 
-    Route::get('/uploads/{file}', function($file) {
-        $hash = md5($file . Auth::user()->email);
+    Route::get('/resumes/{file}', function($file) {
+
+        if( Application::where('resume_hash', '=', $file)->count() > 0 ) {
+            return Response::download(Config::get('epicom.resume_path') . $file);
+        } else {
+            return App::abort(401);
+        }
     });
 });

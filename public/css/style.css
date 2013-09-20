@@ -11,7 +11,16 @@
 }
 
 .stage {
-    border: 1px solid black;
+    border: 1px solid gray;
     padding: 20px;
     margin: 10px 0 10px;
+    color: gray;
+}
+
+.stage-active {
+    border: 2px solid green;
+    padding: 20px;
+    margin: 10px 0 10px;
+    color: green;
+    font-weight: bold;
 }

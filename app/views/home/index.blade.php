@@ -14,16 +14,16 @@
             {{ link_to_route('applications.index', 'Your Applications') }}
             <p>Current Status: {{ $app->status }}</p>
             <div class="stage">
-                Stage 1
+                Screening
+            </div>
+            <div class="stage stage-active">
+                Phone Interview
             </div>
             <div class="stage">
-                Stage 1
+                PHP Quiz / In-Person Interview
             </div>
             <div class="stage">
-                Stage 1
-            </div>
-            <div class="stage">
-                Stage 1
+                Cultural Interview
             </div>
         </div>
     @endif

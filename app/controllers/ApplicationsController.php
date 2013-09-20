@@ -35,7 +35,17 @@ class ApplicationsController extends BaseController {
 	 */
 	public function create()
 	{
-		$this->layout->view = View::make('applications.create');
+		$app = $this->application->where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
+
+		// If resume has been added in last 30 days, display error
+		$now = new DateTime("now");
+		$interval = $now->diff($app->created_at);
+		if( $interval->format('%a') > 30 ) {
+			$this->layout->view = View::make('applications.create');
+		}
+
+		$this->layout->view = View::make('problem')
+			->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
 	}
 
 	/**
@@ -52,11 +62,13 @@ class ApplicationsController extends BaseController {
 		if ($validation->passes())
 		{
 			// Upload files
+			$file = $input['resume_name'];
 			$destinationPath = '/var/uploads/';
-			$filename = $input['resume_name']->getClientOriginalName();
+			$filename = $file->getClientOriginalName();
+			$extension =$file->getClientOriginalExtension();
 
-			$resume_hash = md5($filename . Auth::user()->id);
-			$input['resume_name']->move($destinationPath, $resume_hash);
+			$resume_hash = md5($filename . Auth::user()->id) . "." . $extension;
+			$file->move($destinationPath, $resume_hash);
 
 			$this->application->create(
 				array("first_name" => $input['first_name'],
