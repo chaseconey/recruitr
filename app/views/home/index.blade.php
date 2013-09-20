@@ -12,19 +12,13 @@
         <div class="columns large-12">
             <h3>It appears you already have an application with us...</h3>
             {{ link_to_route('applications.index', 'Your Applications') }}
-            <p>Current Status: {{ $app->status }}</p>
-            <div class="stage">
-                Screening
-            </div>
-            <div class="stage stage-active">
-                Phone Interview
-            </div>
-            <div class="stage">
-                PHP Quiz / In-Person Interview
-            </div>
-            <div class="stage">
-                Cultural Interview
-            </div>
+            <p>Current Status: {{ $app->stage->friendly }}</p>
+
+            @foreach($stages as $stage)
+                <div class="@if($stage->id === $app->stage->id) stage-active @else stage @endif">
+                    {{ $stage->friendly }}
+                </div>
+            @endforeach
         </div>
     @endif
 </div>

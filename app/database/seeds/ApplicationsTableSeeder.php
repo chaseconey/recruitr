@@ -10,7 +10,7 @@ class ApplicationsTableSeeder extends Seeder {
 		$applications = array(
             "first_name" => "Chase",
             "last_name" => "Coney",
-            "status" => "unread",
+            "stage_id" => 1,
             "about" => "About me",
             "career" => "Career thing...",
             "project" => "Made a bunny",

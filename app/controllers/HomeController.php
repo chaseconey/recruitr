@@ -11,9 +11,11 @@ class HomeController extends \BaseController {
 	public function index()
 	{
 		$app = Application::where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
+		$stages = Stages::all();
 
 		$this->layout->view = View::make('home.index')
-			->with('app', $app);
+			->with('app', $app)
+			->with('stages', $stages);
 	}
 
 }

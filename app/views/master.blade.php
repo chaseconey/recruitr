@@ -24,10 +24,18 @@
         <li>{{ link_to_route('applications.create', 'Apply') }}</li>
         <li class="divider"></li>
         <li class="has-dropdown">
+          @if( isset($user) && $user->email )
           <a href="#">{{ $user->email }}</a>
           <ul class="dropdown">
             <li>{{ link_to('user/logout', 'Logout') }}</li>
           </ul>
+          @else
+          <a href="#">Guest</a>
+          <ul class="dropdown">
+            <li>{{ link_to('user/login', 'Login') }}</li>
+            <li>{{ link_to('user/create', 'Register') }}</li>
+          </ul>
+          @endif
         </li>
       </ul>
     </section>

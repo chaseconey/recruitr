@@ -16,12 +16,12 @@ class CreateApplicationsTable extends Migration {
 			$table->increments('id');
 			$table->string('first_name');
 			$table->string('last_name');
-			$table->string('status');
 			$table->text('about');
 			$table->text('career');
 			$table->text('project');
 			$table->string('resume_name');
 			$table->string('resume_hash');
+			$table->integer('stage_id');
 			$table->integer('user_id');
 			$table->timestamps();
 		});

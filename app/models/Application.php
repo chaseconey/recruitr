@@ -11,4 +11,9 @@ class Application extends Eloquent {
 		'project' => 'required',
 		'resume_name' => 'required'
 	);
+
+    public function stage()
+    {
+        return $this->belongsTo('Stages');
+    }
 }
