@@ -35,17 +35,22 @@ class ApplicationsController extends BaseController {
 	 */
 	public function create()
 	{
-		$app = $this->application->where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
+		$application = $this->application->where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
 
-		// If resume has been added in last 30 days, display error
-		$now = new DateTime("now");
-		$interval = $now->diff($app->created_at);
-		if( $interval->format('%a') > 30 ) {
+		if( !$application ) {
 			$this->layout->view = View::make('applications.create');
-		}
+		} else {
+			// If resume has been added in last 30 days, display error
+			$now = new DateTime("now");
+			$interval = $now->diff($application->created_at);
 
-		$this->layout->view = View::make('problem')
-			->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
+			if( $interval->format('%a') > 30 ) {
+				$this->layout->view = View::make('applications.create');
+			}
+
+			$this->layout->view = View::make('problem')
+				->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
+		}
 	}
 
 	/**
@@ -78,7 +83,7 @@ class ApplicationsController extends BaseController {
 				"resume_name" => $filename,
 				"resume_hash" => $resume_hash,
 				"project" => $input['project'],
-				"status" => "unread",
+				"stage_id" => 1,
 				"user_id" => Auth::user()->id)
 			);
 
@@ -101,6 +106,7 @@ class ApplicationsController extends BaseController {
 	public function show($id)
 	{
 		$application = $this->application->findOrFail($id);
+		if( $application->user_id !== Auth::user()->id ) return App::abort(404);
 
 		$this->layout->view = View::make('applications.show', compact('application'));
 	}
@@ -114,6 +120,7 @@ class ApplicationsController extends BaseController {
 	public function edit($id)
 	{
 		$application = $this->application->find($id);
+		if( $application->user_id !== Auth::user()->id ) return App::abort(404);
 
 		if (is_null($application))
 		{
@@ -137,6 +144,9 @@ class ApplicationsController extends BaseController {
 		if ($validation->passes())
 		{
 			$application = $this->application->find($id);
+
+			if( $application->user_id !== Auth::user()->id ) return App::abort(404);
+
 			$application->update($input);
 
 			return Redirect::route('applications.show', $id);
@@ -156,9 +166,12 @@ class ApplicationsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		$this->application->find($id)->delete();
+		$application = $this->application->find($id);
+		if( $application->user_id !== Auth::user()->id ) return App::abort(404);
 
-		return Redirect::route('applications.index');
+		$application->delete();
+
+		return Redirect::to('/');
 	}
 
 }

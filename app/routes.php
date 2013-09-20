@@ -18,7 +18,7 @@ Route::group(array('before' => 'auth'), function()
 {
     Route::resource('/', 'HomeController', array('only' => array('index')));
     // Route::get('apply/{step?}', 'ApplyController@index');
-    Route::resource('applications', 'ApplicationsController');
+    Route::resource('applications', 'ApplicationsController', array('except' => array('index')));
 
     Route::get('/resumes/{file}', function($file) {
 

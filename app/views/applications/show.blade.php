@@ -1,38 +1,27 @@
 
 @section('content')
+<div class="row">
 
-<h1>Show Application</h1>
+<div class="large-12 columns">
+    <h2 class="subheader">{{ $application->first_name . " " . $application->last_name }}</h2>
 
-<p>{{ link_to_route('applications.index', 'Return to all applications') }}</p>
+    <div class="row">
+        <div class="large-6 small-12 columns">
+            <h5 class="subheader">Tell me a bit about yourself</h5>
+            <p>{{ $application->project }}</p>
+        </div>
+        <div class="large-6 small-12 columns">
+            <h5 class="subheader">What are you looking for in the next 1-2 years career-wise?</h5>
+            <p>{{ $application->career }}</p>
+        </div>
+    </div>
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>First_name</th>
-				<th>Last_name</th>
-				<th>About</th>
-				<th>Career</th>
-				<th>Project</th>
-				<th>Resume_loc</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>{{{ $application->first_name }}}</td>
-					<td>{{{ $application->last_name }}}</td>
-					<td>{{{ $application->about }}}</td>
-					<td>{{{ $application->career }}}</td>
-					<td>{{{ $application->project }}}</td>
-					<td>{{{ $application->resume_loc }}}</td>
-                    <td>{{ link_to_route('applications.edit', 'Edit', array($application->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('applications.destroy', $application->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-		</tr>
-	</tbody>
-</table>
-
+    <div class="row">
+        <div class="large-12 small-12 columns">
+            <h5 class="subheader">Tell me about a large web-related project you worked on recently? What technologies were used, what process did you use to complete the project, etc?</h5>
+            <p>{{ $application->project }}</p>
+        </div>
+    </div>
+</div>
+</div>
 @stop

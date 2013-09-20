@@ -11,7 +11,7 @@
     @else
         <div class="columns large-12">
             <h3>It appears you already have an application with us...</h3>
-            {{ link_to_route('applications.index', 'Your Applications') }}
+            {{ link_to_route('applications.show', 'Your Current Application', $app->id) }}
             <p>Current Status: {{ $app->stage->friendly }}</p>
 
             @foreach($stages as $stage)
