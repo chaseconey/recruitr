@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<div class="row">
 <form method="POST" action="{{ (Confide::checkAction('UserController@do_forgot_password')) ?: URL::to('/user/forgot') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
 
@@ -20,5 +19,4 @@
         <div class="alert-box">{{{ Session::get('notice') }}}</div>
     @endif
 </form>
-</div>
 @stop

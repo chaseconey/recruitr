@@ -24,13 +24,13 @@
         <li>{{ link_to_route('applications.create', 'Apply') }}</li>
         <li class="divider"></li>
 
-        @if($user->admin)
+        @if (isset($user) && $user->admin)
         <li>{{ link_to_route('admin.index', 'Admin') }}</li>
         <li class="divider"></li>
         @endif
 
         <li class="has-dropdown">
-          @if( isset($user) && $user->email )
+          @if (isset($user) && $user->email)
           <a href="#">{{ $user->email }}</a>
           <ul class="dropdown">
             <li>{{ link_to('user/logout', 'Logout') }}</li>
@@ -49,15 +49,18 @@
 
   <!-- End Top Bar -->
   <div class="container">
+    <div class="row">
 
-    @if (Session::has('message'))
-    <div data-alert class="alert-box">
-      <a href="#" class="close">&times;</a>
-      {{ Session::get('message') }}
+      @if (Session::has('message'))
+      <div data-alert class="alert-box">
+        <a href="#" class="close">&times;</a>
+        {{ Session::get('message') }}
+      </div>
+      @endif
+
+      @yield('content')
+
     </div>
-    @endif
-
-    @yield('content')
 
   </div>
 

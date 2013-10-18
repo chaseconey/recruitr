@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-<div class="row">
 <form method="POST" action="{{{ (Confide::checkAction('UserController@do_reset_password'))    ?: URL::to('/user/reset') }}}" accept-charset="UTF-8">
     <input type="hidden" name="token" value="{{{ $token }}}">
     <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
@@ -24,5 +23,4 @@
         <button type="submit" class="btn btn-primary">{{{ Lang::get('confide::confide.forgot.submit') }}}</button>
     </div>
 </form>
-</div>
 @stop

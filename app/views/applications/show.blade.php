@@ -1,7 +1,5 @@
 
 @section('content')
-<div class="row">
-
 <div class="large-12 columns">
     <h2 class="subheader">{{ $application->first_name . " " . $application->last_name }}</h2>
 
@@ -33,6 +31,5 @@
             <p>{{ Form::checkbox('work_status', $application->work_status, $application->work_status, array('disabled', 'disabled')) }}</p>
         </div>
     </div>
-</div>
 </div>
 @stop

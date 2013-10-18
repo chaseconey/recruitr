@@ -1,7 +1,6 @@
 
 @section('content')
 
-<div class="row">
     @if(count($app) < 1)
         <div class="columns large-12 text-center">
             <p class="marketing">You don't appear to have any applications with us currently. That is no problem, just click below to Apply!</p>
@@ -21,6 +20,5 @@
             @endforeach
         </div>
     @endif
-</div>
 
 @stop
