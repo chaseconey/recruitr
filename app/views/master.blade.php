@@ -23,6 +23,12 @@
         <li class="divider"></li>
         <li>{{ link_to_route('applications.create', 'Apply') }}</li>
         <li class="divider"></li>
+
+        @if($user->admin)
+        <li>{{ link_to_route('admin.index', 'Admin') }}</li>
+        <li class="divider"></li>
+        @endif
+
         <li class="has-dropdown">
           @if( isset($user) && $user->email )
           <a href="#">{{ $user->email }}</a>

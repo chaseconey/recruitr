@@ -16,4 +16,9 @@ class Application extends Eloquent {
     {
         return $this->belongsTo('Stages');
     }
+
+    public function salary()
+    {
+        return $this->belongsTo('Range', 'salary_range_id');
+    }
 }

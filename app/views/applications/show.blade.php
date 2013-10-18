@@ -22,6 +22,17 @@
             <p>{{ $application->project }}</p>
         </div>
     </div>
+
+    <div class="row">
+        <div class="large-6 small-12 columns">
+            <h5 class="subheader">Salary Requirements</h5>
+            <p>{{ $application->salary->range }}</p>
+        </div>
+        <div class="large-6 small-12 columns">
+            <h5 class="subheader">Are you allowed to work full-time in the United States without sponsorship?</h5>
+            <p>{{ Form::checkbox('work_status', $application->work_status, $application->work_status, array('disabled', 'disabled')) }}</p>
+        </div>
+    </div>
 </div>
 </div>
 @stop
