@@ -13,11 +13,11 @@
     </div>
 
     @if ( Session::get('error') )
-        <div class="alert alert-error">{{{ Session::get('error') }}}</div>
+        <div class="alert-box alert">{{{ Session::get('error') }}}</div>
     @endif
 
     @if ( Session::get('notice') )
-        <div class="alert">{{{ Session::get('notice') }}}</div>
+        <div class="alert-box">{{{ Session::get('notice') }}}</div>
     @endif
 </form>
 </div>
