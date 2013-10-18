@@ -25,7 +25,7 @@
         <li class="divider"></li>
 
         @if (isset($user) && $user->admin)
-        <li>{{ link_to_route('admin.index', 'Admin') }}</li>
+        <li>{{ link_to_route('manage.index', 'Manage') }}</li>
         <li class="divider"></li>
         @endif
 

@@ -25,7 +25,7 @@ class ManageController extends BaseController {
     {
         $applications = $this->application->all();
 
-        $this->layout->view = View::make('admin.manage.index', compact('applications'));
+        $this->layout->view = View::make('manage.index', compact('applications'));
     }
 
     /**
