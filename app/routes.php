@@ -17,7 +17,6 @@ Route::get( 'user/logout',                 'UserController@logout');
 Route::group(array('before' => 'auth'), function()
 {
     Route::resource('/', 'HomeController', array('only' => array('index')));
-    // Route::get('apply/{step?}', 'ApplyController@index');
     Route::resource('applications', 'ApplicationsController', array('except' => array('index')));
 
     Route::get('/resumes/{file}', function($file) {
@@ -31,6 +30,8 @@ Route::group(array('before' => 'auth'), function()
 
     Route::group(array('before' => 'admin'), function() {
         Route::resource('ranges', 'RangesController');
+        Route::resource('admin', 'AdminController', array('only' => array('index')));
+        Route::resource('admin.applications', 'AdminApplicationsController');
     });
 
 });
