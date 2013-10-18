@@ -30,8 +30,7 @@ Route::group(array('before' => 'auth'), function()
 
     Route::group(array('before' => 'admin'), function() {
         Route::resource('ranges', 'RangesController');
-        Route::resource('admin', 'AdminController', array('only' => array('index')));
-        Route::resource('admin/manage', 'ManageController');
+        Route::resource('manage', 'ManageController');
     });
 
 });
