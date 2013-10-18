@@ -67,10 +67,9 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="http://www.epicom.com/" target="_blank">Main Site</a></li>
+            <li><a href="http://www.epicom.com/about/our-company" target="_blank">About Epicom</a></li>
+            <li><a href="http://www.epicom.com/blog" target="_blank">Blog</a></li>
           </ul>
         </div>
       </div>
