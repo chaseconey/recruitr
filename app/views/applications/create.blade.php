@@ -59,11 +59,12 @@
 
         <div class="row">
             <div class="large-6 small-12 columns">
-                {{ Form::label('salary_range', 'Salary Requirements') }}
-                {{ Form::select('salary_range', array('') ) }}
+                {{ Form::label('salary_range_id', 'Salary Requirements') }}
+                {{ Form::select('salary_range_id', $ranges ) }}
             </div>
             <div class="large-6 small-12 columns">
                 {{ Form::label('work_status', 'Are you allowed to work full-time in the United States without sponsorship?') }}
+                {{ Form::hidden('work_status', 0) }}
                 {{ Form::checkbox('work_status', 1) }}
             </div>
         </div>

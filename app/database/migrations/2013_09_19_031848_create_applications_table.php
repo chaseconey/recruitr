@@ -23,6 +23,8 @@ class CreateApplicationsTable extends Migration {
 			$table->string('resume_hash');
 			$table->integer('stage_id');
 			$table->integer('user_id');
+			$table->integer('salary_range_id');
+			$table->boolean('work_status')->default(false);
 			$table->timestamps();
 		});
 	}

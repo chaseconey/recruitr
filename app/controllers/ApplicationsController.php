@@ -36,16 +36,17 @@ class ApplicationsController extends BaseController {
 	public function create()
 	{
 		$application = $this->application->where("user_id", "=", Auth::user()->id)->orderBy('created_at')->first();
+		$ranges = Range::lists('range', 'id');
 
 		if( !$application ) {
-			$this->layout->view = View::make('applications.create');
+			$this->layout->view = View::make('applications.create', compact('ranges'));
 		} else {
 			// If resume has been added in last 30 days, display error
 			$now = new DateTime("now");
 			$interval = $now->diff($application->created_at);
 
 			if( $interval->format('%a') > 30 ) {
-				$this->layout->view = View::make('applications.create');
+				$this->layout->view = View::make('applications.create', compact($ranges));
 			} else {
 				$this->layout->view = View::make('problem')
 					->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
