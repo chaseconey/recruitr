@@ -78,3 +78,8 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('admin', function()
+{
+    if (!Auth::user()->admin) return Redirect::to('/');
+});
