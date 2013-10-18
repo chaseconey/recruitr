@@ -57,6 +57,17 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="large-6 small-12 columns">
+                {{ Form::label('salary_range', 'Salary Requirements') }}
+                {{ Form::select('salary_range', array('') ) }}
+            </div>
+            <div class="large-6 small-12 columns">
+                {{ Form::label('work_status', 'Are you allowed to work full-time in the United States without sponsorship?') }}
+                {{ Form::checkbox('work_status', 1) }}
+            </div>
+        </div>
+
         <button type="submit" class="right">Submit</button>
 </fieldset>
 

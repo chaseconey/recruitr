@@ -46,10 +46,10 @@ class ApplicationsController extends BaseController {
 
 			if( $interval->format('%a') > 30 ) {
 				$this->layout->view = View::make('applications.create');
+			} else {
+				$this->layout->view = View::make('problem')
+					->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
 			}
-
-			$this->layout->view = View::make('problem')
-				->with('text', 'You have already created an application in the last 30 days. Please check the status of that application.');
 		}
 	}
 
@@ -75,17 +75,14 @@ class ApplicationsController extends BaseController {
 			$resume_hash = md5($filename . Auth::user()->id) . "." . $extension;
 			$file->move($destinationPath, $resume_hash);
 
-			$this->application->create(
-				array("first_name" => $input['first_name'],
-				"last_name" => $input['last_name'],
-				"career" => $input['career'],
-				"about" => $input['about'],
+			$attrs = array(
 				"resume_name" => $filename,
 				"resume_hash" => $resume_hash,
-				"project" => $input['project'],
 				"stage_id" => 1,
-				"user_id" => Auth::user()->id)
+				"user_id" => Auth::user()->id
 			);
+
+			$this->application->create(array_merge($attrs, $input));
 
 			return Redirect::to('/')
 				->with('message', 'Application has been submitted');
@@ -106,7 +103,7 @@ class ApplicationsController extends BaseController {
 	public function show($id)
 	{
 		$application = $this->application->findOrFail($id);
-		if( $application->user_id !== Auth::user()->id ) return App::abort(404);
+		if( $application->user_id !== Auth::user()->id ) return App::abort(403);
 
 		$this->layout->view = View::make('applications.show', compact('application'));
 	}

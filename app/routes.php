@@ -28,4 +28,9 @@ Route::group(array('before' => 'auth'), function()
             return App::abort(401);
         }
     });
+
+    Route::group(array('before' => 'admin'), function() {
+        Route::resource('ranges', 'RangesController');
+    });
+
 });
